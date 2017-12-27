@@ -1,0 +1,58 @@
+file foo1.so 发现是arm 32的， 下个工具链。
+用工具链的objdump反汇编。
+比如：
+ 2008  file foo1.so 
+ 2009  sudo apt-get install gcc-arm-linux-gnueabi
+ 2010  arm-linux-gnueabi-objdump -T foo1.so 
+ 2011  arm-linux-gnueabi-objdump -T foo1.so | c++filt 
+ 2012  arm-linux-gnueabi-objdump -T foo1.so | c++filt  | grep h264d_mark_err_slice_skip
+ 2013  arm-linux-gnueabi-objdump -c -T foo1.so   | grep h264d_mark_err_slice_skip
+ 2014  arm-linux-gnueabi-objdump -C -T foo1.so   | grep h264d_mark_err_slice_skip
+ 2015  arm-linux-gnueabi-objdump -C -d -T foo1.so   | grep h264d_mark_err_slice_skip
+ 2016  arm-linux-gnueabi-objdump -C -d -T foo1.so   >> out1
+
+把名字是h264d_mark_err_slice_skip的代码找到，分别放到文件里做比较。用的diffuse，这个比较工具要python-gtk2-dev的。
+比较汇编代码差异。具体就是查arm指令功能，同时去掉无效差异，比如用了不同的寄存器。最后结果就是修改前后的差异。
+
+--------
+以下是两个文件的不同之处：
+
+68e0      	ldr	r0, [r4, #12]
+f894 1040 	ldrb.w	r1, [r4, #64]	; 0x40
+b949      	cbnz	r1, 19bba <ih264d_mark_err_slice_skip@@Base+0x66>
+8ac3      	ldrh	r3, [r0, #22]
+4611      	mov	r1, r2
+4620      	mov	r0, r4
+461a      	mov	r2, r3
+f00d f9c8 	bl	26f42 <ih264d_end_of_pic@@Base>
+68e0      	ldr	r0, [r4, #12]
+8ac1      	ldrh	r1, [r0, #22]
+f8a4 1326 	strh.w	r1, [r4, #806]	; 0x326
+
+这段foo1.so里有，修改后的foo2.so没有。
+大意:
+foo1内部多了一个分支， [r4+64] == 0 的时候执行:
+beforeif 
+if [r4+64] == 0 :
+	r0 = [r4+12]
+	r3 = [r0 + 22]
+	r1 = r2
+	r0 = r4
+	r2 = r3
+	call function in ih264d_end_of_pic@@Base
+	r0 = [r4+12]
+	r1 = [r0 + 22]
+	[r1] = [r4+806]
+
+some code code code .....
+
+foo2内部去掉了上面列的if分支：
+beforeif
+some code code code .....
+
+分支里的函数调用也去掉了
+
+
+两个反汇编文件里存在使用不同寄存器的代码，但执行的实际效果是一致。 disf开头的文件里有标注。
+以1结尾的文件对应foo1.so,以2结尾的对应foo2.so.
+
