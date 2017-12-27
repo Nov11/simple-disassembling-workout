@@ -7,21 +7,23 @@ f8d4 04b8 	ldr.w	r0, [r4, #1208]	; 0x4b8
 7880      	ldrb	r0, [r0, #2]
 f010 0f01 	tst.w	r0, #1
 d177      	bne.n	19d0a <ih264d_mark_err_slice_skip@@Base+0x106>
-68e1      	ldr	r1, [r4, #12]
+68e1      	ldr	r1(r6), [r4, #12];check
 f8d4 23dc 	ldr.w	r2, [r4, #988]	; 0x3dc
 8e27      	ldrh	r7, [r4, #48]	; 0x30
-7e0d      	ldrb	r5, [r1, #24]
-9105      	str	r1, [sp, #20]
-2100      	movs	r1, #0
+7e0d      	ldrb	r5, [r1(r6), #24];[[r4+12]+24]
+9105      	str	r1(r6), [sp, #20];[sp+20]=[r4+12]
+2100      	movs	r1(r6), #0
 9706      	str	r7, [sp, #24]
 2d00      	cmp	r5, #0
 f894 7462 	ldrb.w	r7, [r4, #1122]	; 0x462
-7151      	strb	r1, [r2, #5]
-4632      	mov	r2, r6
-950a      	str	r5, [sp, #40]	; 0x28
+7151      	strb	r1(r6), [r2, #5];[[r4+998]+5] = 0
+4632      	mov	r2(r7), r6(r1)
+950a      	str	r5, [sp, #40]	; 0x28 [sp+40] = [[r4+12]+24]
+;r5 not same, but value is not used later
+;r1=r6 r7=r2  values set into memory are the same	
 bf18      	it	ne
-3201      	addne	r2, #1
-f016 0f01 	tst.w	r6, #1
+3201      	addne	r2(r7), #1
+f016 0f01 	tst.w	r6(r1), #1
 9815      	ldr	r0, [sp, #84]	; 0x54
 bf08      	it	eq
 4632      	moveq	r2, r6
@@ -41,10 +43,10 @@ f8df 65d8 	ldr.w	r6, [pc, #1496]	; 1a230 <ih264d_mark_err_slice_skip@@Base+0x62c
 6833      	ldr	r3, [r6, #0]
 683f      	ldr	r7, [r7, #0]
 8281      	strh	r1, [r0, #20]
-f8c4 748c 	str.w	r7, [r4, #1164]	; 0x48c
+f8c4 748c 	str.w	r7, [r4, #1164]	; 0x48c same
 2700      	movs	r7, #0
-f8c4 35ec 	str.w	r3, [r4, #1516]	; 0x5ec
-f8c4 25e4 	str.w	r2, [r4, #1508]	; 0x5e4
+f8c4 35ec 	str.w	r3, [r4, #1516]	; 0x5ec same
+f8c4 25e4 	str.w	r2, [r4, #1508]	; 0x5e4 same as ori
 f8d4 0344 	ldr.w	r0, [r4, #836]	; 0x344
 9a14      	ldr	r2, [sp, #80]	; 0x50
 2800      	cmp	r0, #0
@@ -256,28 +258,28 @@ f884 0043 	strb.w	r0, [r4, #67]	; 0x43
 4620      	mov	r0, r4
 f009 f97b 	bl	231ac <ih264d_update_qp@@Base>
 4625      	mov	r5, r4
-f04f 0901 	mov.w	r9, #1
+f04f 0901 	mov.w	r9(r1), #1
 f8b5 44c8 	ldrh.w	r4, [r5, #1224]	; 0x4c8
-211c      	movs	r1, #28
-f8d5 6478 	ldr.w	r6, [r5, #1144]	; 0x478
+211c      	movs	r1(r2), #28
+f8d5 6478 	ldr.w	r6(fp), [r5, #1144]	; 0x478
 2700      	movs	r7, #0
-f895 2462 	ldrb.w	r2, [r5, #1122]	; 0x462
+f895 2462 	ldrb.w	r2(r6), [r5, #1122]	; 0x462
 4653      	mov	r3, sl
-e009      	b.n	19ee4 <ih264d_mark_err_slice_skip@@Base+0x2e0>
+e009      	b.n	19ee4 <ih264d_mark_err_slice_skip@@Base+0x2e0>goto
 f8b5 04c8 	ldrh.w	r0, [r5, #1224]	; 0x4c8
-2200      	movs	r2, #0
-211c      	movs	r1, #28
+2200      	movs	r2(r6), #0
+211c      	movs	r1(r2), #28
 9b08      	ldr	r3, [sp, #32]
-4458      	add	r0, fp
+4458      	add	r0, fp(sl)
 f8a5 04c8 	strh.w	r0, [r5, #1224]	; 0x4c8
-f885 2462 	strb.w	r2, [r5, #1122]	; 0x462
-eb02 0042 	add.w	r0, r2, r2, lsl #1
-f106 0b01 	add.w	fp, r6, #1
-4616      	mov	r6, r2
-9203      	str	r2, [sp, #12]
-ea49 1800 	orr.w	r8, r9, r0, lsl #4
-ebc2 1002 	rsb	r0, r2, r2, lsl #4
-eb01 0980 	add.w	r9, r1, r0, lsl #2
+f885 2462 	strb.w	r2(r6), [r5, #1122]	; 0x462
+eb02 0042 	add.w	r0, r2(r6), r2(r6), lsl #1;code before is ignored
+f106 0b01 	add.w	fp, r6(fp), #1;same [r5+1144] = [] + 1
+4616      	mov	r6, r2;ignore
+9203      	str	r2, [sp, #12];same
+ea49 1800 	orr.w	r8, r9, r0, lsl #4;same
+ebc2 1002 	rsb	r0, r2, r2, lsl #4;same
+eb01 0980 	add.w	r9, r1, r0, lsl #2;same
 2f00      	cmp	r7, #0
 f040 80d8 	bne.w	1a0b2 <ih264d_mark_err_slice_skip@@Base+0x4ae>
 6868      	ldr	r0, [r5, #4]
@@ -398,21 +400,21 @@ fa5f f886 	uxtb.w	r8, r6
 9803      	ldr	r0, [sp, #12]
 4642      	mov	r2, r8
 f8d5 33cc 	ldr.w	r3, [r5, #972]	; 0x3cc
-46b3      	mov	fp, r6
-fa5f fa80 	uxtb.w	sl, r0
+46b3      	mov	fp(sl), r6
+fa5f fa80 	uxtb.w	sl(r9), r0
 4628      	mov	r0, r5
-4651      	mov	r1, sl
+4651      	mov	r1, sl(r9)
 4798      	blx	r3
 f8d5 047c 	ldr.w	r0, [r5, #1148]	; 0x47c
 f04f 0901 	mov.w	r9, #1
-f8d5 6478 	ldr.w	r6, [r5, #1144]	; 0x478
+f8d5 6478 	ldr.w	r6(fp), [r5, #1144]	; 0x478
 f8c5 0480 	str.w	r0, [r5, #1152]	; 0x480
 9802      	ldr	r0, [sp, #8]
 7800      	ldrb	r0, [r0, #0]
 b198      	cbz	r0, 1a09a <ih264d_mark_err_slice_skip@@Base+0x496>
-9807      	ldr	r0, [sp, #28]
-4651      	mov	r1, sl
-f8cd 9000 	str.w	r9, [sp]
+9807      	ldr	r0, [sp, #28];same just place ahead
+4651      	mov	r1, sl(r9)
+f8cd 9000 	str.w	r9, [sp];[sp] =1 same
 4642      	mov	r2, r8
 9001      	str	r0, [sp, #4]
 9809      	ldr	r0, [sp, #36]	; 0x24
@@ -420,13 +422,13 @@ b2c3      	uxtb	r3, r0
 4628      	mov	r0, r5
 f012 ff9c 	bl	2cfc0 <ih264d_parse_tfr_nmb@@Base>
 f8d5 03e0 	ldr.w	r0, [r5, #992]	; 0x3e0
-ebcb 110b 	rsb	r1, fp, fp, lsl #4
+ebcb 110b 	rsb	r1, fp(sl), fp(sl), lsl #4
 eb00 0081 	add.w	r0, r0, r1, lsl #2
 f8c5 03e0 	str.w	r0, [r5, #992]	; 0x3e0
 e71a      	b.n	19ed0 <ih264d_mark_err_slice_skip@@Base+0x2cc>
-9807      	ldr	r0, [sp, #28]
-4651      	mov	r1, sl
-f8cd 9000 	str.w	r9, [sp]
+9807      	ldr	r0, [sp, #28];same just placed ahead
+4651      	mov	r1, sl(r9)
+f8cd 9000 	str.w	r9, [sp];same
 4642      	mov	r2, r8
 9001      	str	r0, [sp, #4]
 9809      	ldr	r0, [sp, #36]	; 0x24
