@@ -1,0 +1,588 @@
+00019c04 <ih264d_mark_err_slice_skip@@Base>:
+   19c04:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   19c08:	b08b      	sub	sp, #44	; 0x2c
+   19c0a:	4604      	mov	r4, r0
+   19c0c:	460e      	mov	r6, r1
+   19c0e:	f8d4 04b8 	ldr.w	r0, [r4, #1208]	; 0x4b8
+   19c12:	7880      	ldrb	r0, [r0, #2]
+   19c14:	f010 0f01 	tst.w	r0, #1
+   19c18:	d177      	bne.n	19d0a <ih264d_mark_err_slice_skip@@Base+0x106>
+   19c1a:	68e1      	ldr	r1, [r4, #12]
+   19c1c:	f8d4 23dc 	ldr.w	r2, [r4, #988]	; 0x3dc
+   19c20:	8e27      	ldrh	r7, [r4, #48]	; 0x30
+   19c22:	7e0d      	ldrb	r5, [r1, #24]
+   19c24:	9105      	str	r1, [sp, #20]
+   19c26:	2100      	movs	r1, #0
+   19c28:	9706      	str	r7, [sp, #24]
+   19c2a:	2d00      	cmp	r5, #0
+   19c2c:	f894 7462 	ldrb.w	r7, [r4, #1122]	; 0x462
+   19c30:	7151      	strb	r1, [r2, #5]
+   19c32:	4632      	mov	r2, r6
+   19c34:	950a      	str	r5, [sp, #40]	; 0x28
+   19c36:	bf18      	it	ne
+   19c38:	3201      	addne	r2, #1
+   19c3a:	f016 0f01 	tst.w	r6, #1
+   19c3e:	9815      	ldr	r0, [sp, #84]	; 0x54
+   19c40:	bf08      	it	eq
+   19c42:	4632      	moveq	r2, r6
+   19c44:	4692      	mov	sl, r2
+   19c46:	2801      	cmp	r0, #1
+   19c48:	d163      	bne.n	19d12 <ih264d_mark_err_slice_skip@@Base+0x10e>
+   19c4a:	68e0      	ldr	r0, [r4, #12]
+   19c4c:	f8df 25d8 	ldr.w	r2, [pc, #1496]	; 1a228 <ih264d_mark_err_slice_skip@@Base+0x624>
+   19c50:	f8df 75d8 	ldr.w	r7, [pc, #1496]	; 1a22c <ih264d_mark_err_slice_skip@@Base+0x628>
+   19c54:	f8df 65d8 	ldr.w	r6, [pc, #1496]	; 1a230 <ih264d_mark_err_slice_skip@@Base+0x62c>
+   19c58:	447a      	add	r2, pc
+   19c5a:	82c3      	strh	r3, [r0, #22]
+   19c5c:	447f      	add	r7, pc
+   19c5e:	68e0      	ldr	r0, [r4, #12]
+   19c60:	447e      	add	r6, pc
+   19c62:	6812      	ldr	r2, [r2, #0]
+   19c64:	6833      	ldr	r3, [r6, #0]
+   19c66:	683f      	ldr	r7, [r7, #0]
+   19c68:	8281      	strh	r1, [r0, #20]
+   19c6a:	f8c4 748c 	str.w	r7, [r4, #1164]	; 0x48c
+   19c6e:	2700      	movs	r7, #0
+   19c70:	f8c4 35ec 	str.w	r3, [r4, #1516]	; 0x5ec
+   19c74:	f8c4 25e4 	str.w	r2, [r4, #1508]	; 0x5e4
+   19c78:	f8d4 0344 	ldr.w	r0, [r4, #836]	; 0x344
+   19c7c:	9a14      	ldr	r2, [sp, #80]	; 0x50
+   19c7e:	2800      	cmp	r0, #0
+   19c80:	bf1c      	itt	ne
+   19c82:	6b00      	ldrne	r0, [r0, #48]	; 0x30
+   19c84:	1c81      	addne	r1, r0, #2
+   19c86:	6920      	ldr	r0, [r4, #16]
+   19c88:	f500 7304 	add.w	r3, r0, #528	; 0x210
+   19c8c:	2000      	movs	r0, #0
+   19c8e:	781e      	ldrb	r6, [r3, #0]
+   19c90:	f503 7305 	add.w	r3, r3, #532	; 0x214
+   19c94:	2e01      	cmp	r6, #1
+   19c96:	bf08      	it	eq
+   19c98:	4638      	moveq	r0, r7
+   19c9a:	3701      	adds	r7, #1
+   19c9c:	f5b7 7f80 	cmp.w	r7, #256	; 0x100
+   19ca0:	d1f5      	bne.n	19c8e <ih264d_mark_err_slice_skip@@Base+0x8a>
+   19ca2:	68e3      	ldr	r3, [r4, #12]
+   19ca4:	2500      	movs	r5, #0
+   19ca6:	2701      	movs	r7, #1
+   19ca8:	f44f 7605 	mov.w	r6, #532	; 0x214
+   19cac:	76dd      	strb	r5, [r3, #27]
+   19cae:	68e3      	ldr	r3, [r4, #12]
+   19cb0:	f883 7032 	strb.w	r7, [r3, #50]	; 0x32
+   19cb4:	68e3      	ldr	r3, [r4, #12]
+   19cb6:	f883 7033 	strb.w	r7, [r3, #51]	; 0x33
+   19cba:	e9d4 3703 	ldrd	r3, r7, [r4, #12]
+   19cbe:	fb00 7006 	mla	r0, r0, r6, r7
+   19cc2:	8adb      	ldrh	r3, [r3, #22]
+   19cc4:	9000      	str	r0, [sp, #0]
+   19cc6:	4620      	mov	r0, r4
+   19cc8:	f00c fc5a 	bl	26580 <ih264d_start_of_pic@@Base>
+   19ccc:	2800      	cmp	r0, #0
+   19cce:	f040 8219 	bne.w	1a104 <ih264d_mark_err_slice_skip@@Base+0x500>
+   19cd2:	f8d4 03ac 	ldr.w	r0, [r4, #940]	; 0x3ac
+   19cd6:	f241 41e4 	movw	r1, #5348	; 0x14e4
+   19cda:	6800      	ldr	r0, [r0, #0]
+   19cdc:	f880 5022 	strb.w	r5, [r0, #34]	; 0x22
+   19ce0:	f44f 50aa 	mov.w	r0, #5440	; 0x1540
+   19ce4:	5025      	str	r5, [r4, r0]
+   19ce6:	f241 40e8 	movw	r0, #5352	; 0x14e8
+   19cea:	1822      	adds	r2, r4, r0
+   19cec:	5861      	ldr	r1, [r4, r1]
+   19cee:	4620      	mov	r0, r4
+   19cf0:	f008 ffee 	bl	22cd0 <ih264d_get_next_display_field@@Base>
+   19cf4:	f241 40ec 	movw	r0, #5356	; 0x14ec
+   19cf8:	5820      	ldr	r0, [r4, r0]
+   19cfa:	b3a0      	cbz	r0, 19d66 <ih264d_mark_err_slice_skip@@Base+0x162>
+   19cfc:	f241 40bc 	movw	r0, #5308	; 0x14bc
+   19d00:	f44f 51a7 	mov.w	r1, #5344	; 0x14e0
+   19d04:	5820      	ldr	r0, [r4, r0]
+   19d06:	5060      	str	r0, [r4, r1]
+   19d08:	e031      	b.n	19d6e <ih264d_mark_err_slice_skip@@Base+0x16a>
+   19d0a:	4620      	mov	r0, r4
+   19d0c:	f00d f911 	bl	26f32 <ih264d_err_pic_dispbuf_mgr@@Base>
+   19d10:	e1f7      	b.n	1a102 <ih264d_mark_err_slice_skip@@Base+0x4fe>
+   19d12:	f241 5064 	movw	r0, #5476	; 0x1564
+   19d16:	5820      	ldr	r0, [r4, r0]
+   19d18:	f8b4 13a0 	ldrh.w	r1, [r4, #928]	; 0x3a0
+   19d1c:	f894 2607 	ldrb.w	r2, [r4, #1543]	; 0x607
+   19d20:	b1a2      	cbz	r2, 19d4c <ih264d_mark_err_slice_skip@@Base+0x148>
+   19d22:	f241 5270 	movw	r2, #5488	; 0x1570
+   19d26:	eb01 0181 	add.w	r1, r1, r1, lsl #2
+   19d2a:	eb04 0802 	add.w	r8, r4, r2
+   19d2e:	58a3      	ldr	r3, [r4, r2]
+   19d30:	eb00 0181 	add.w	r1, r0, r1, lsl #2
+   19d34:	4299      	cmp	r1, r3
+   19d36:	d10d      	bne.n	19d54 <ih264d_mark_err_slice_skip@@Base+0x150>
+   19d38:	f8d4 585c 	ldr.w	r5, [r4, #2140]	; 0x85c
+   19d3c:	2d00      	cmp	r5, #0
+   19d3e:	f000 81e4 	beq.w	1a10a <ih264d_mark_err_slice_skip@@Base+0x506>
+   19d42:	f8d4 03e0 	ldr.w	r0, [r4, #992]	; 0x3e0
+   19d46:	ebc5 1105 	rsb	r1, r5, r5, lsl #4
+   19d4a:	e1e8      	b.n	1a11e <ih264d_mark_err_slice_skip@@Base+0x51a>
+   19d4c:	f241 5170 	movw	r1, #5488	; 0x1570
+   19d50:	eb04 0801 	add.w	r8, r4, r1
+   19d54:	f8b4 13a0 	ldrh.w	r1, [r4, #928]	; 0x3a0
+   19d58:	eb01 0181 	add.w	r1, r1, r1, lsl #2
+   19d5c:	eb00 0081 	add.w	r0, r0, r1, lsl #2
+   19d60:	f8c8 0000 	str.w	r0, [r8]
+   19d64:	e03f      	b.n	19de6 <ih264d_mark_err_slice_skip@@Base+0x1e2>
+   19d66:	f504 50aa 	add.w	r0, r4, #5440	; 0x1540
+   19d6a:	2101      	movs	r1, #1
+   19d6c:	6001      	str	r1, [r0, #0]
+   19d6e:	f241 504e 	movw	r0, #5454	; 0x154e
+   19d72:	5c20      	ldrb	r0, [r4, r0]
+   19d74:	2801      	cmp	r0, #1
+   19d76:	d132      	bne.n	19dde <ih264d_mark_err_slice_skip@@Base+0x1da>
+   19d78:	f241 5050 	movw	r0, #5456	; 0x1550
+   19d7c:	5821      	ldr	r1, [r4, r0]
+   19d7e:	b969      	cbnz	r1, 19d9c <ih264d_mark_err_slice_skip@@Base+0x198>
+   19d80:	f8df 14b0 	ldr.w	r1, [pc, #1200]	; 1a234 <ih264d_mark_err_slice_skip@@Base+0x630>
+   19d84:	1825      	adds	r5, r4, r0
+   19d86:	f241 5054 	movw	r0, #5460	; 0x1554
+   19d8a:	4623      	mov	r3, r4
+   19d8c:	4479      	add	r1, pc
+   19d8e:	5820      	ldr	r0, [r4, r0]
+   19d90:	680a      	ldr	r2, [r1, #0]
+   19d92:	2100      	movs	r1, #0
+   19d94:	f7fc ff7b 	bl	16c8e <ithread_create@@Base>
+   19d98:	2001      	movs	r0, #1
+   19d9a:	6028      	str	r0, [r5, #0]
+   19d9c:	f241 5088 	movw	r0, #5512	; 0x1588
+   19da0:	5820      	ldr	r0, [r4, r0]
+   19da2:	2803      	cmp	r0, #3
+   19da4:	d11b      	bne.n	19dde <ih264d_mark_err_slice_skip@@Base+0x1da>
+   19da6:	f8d4 0864 	ldr.w	r0, [r4, #2148]	; 0x864
+   19daa:	b110      	cbz	r0, 19db2 <ih264d_mark_err_slice_skip@@Base+0x1ae>
+   19dac:	f894 02b4 	ldrb.w	r0, [r4, #692]	; 0x2b4
+   19db0:	b1a8      	cbz	r0, 19dde <ih264d_mark_err_slice_skip@@Base+0x1da>
+   19db2:	f241 4084 	movw	r0, #5252	; 0x1484
+   19db6:	5821      	ldr	r1, [r4, r0]
+   19db8:	b989      	cbnz	r1, 19dde <ih264d_mark_err_slice_skip@@Base+0x1da>
+   19dba:	f8df 147c 	ldr.w	r1, [pc, #1148]	; 1a238 <ih264d_mark_err_slice_skip@@Base+0x634>
+   19dbe:	1825      	adds	r5, r4, r0
+   19dc0:	f241 4088 	movw	r0, #5256	; 0x1488
+   19dc4:	2200      	movs	r2, #0
+   19dc6:	5022      	str	r2, [r4, r0]
+   19dc8:	f241 408c 	movw	r0, #5260	; 0x148c
+   19dcc:	4479      	add	r1, pc
+   19dce:	5820      	ldr	r0, [r4, r0]
+   19dd0:	4623      	mov	r3, r4
+   19dd2:	680a      	ldr	r2, [r1, #0]
+   19dd4:	2100      	movs	r1, #0
+   19dd6:	f7fc ff5a 	bl	16c8e <ithread_create@@Base>
+   19dda:	2001      	movs	r0, #1
+   19ddc:	6028      	str	r0, [r5, #0]
+   19dde:	f241 5084 	movw	r0, #5508	; 0x1584
+   19de2:	2100      	movs	r1, #0
+   19de4:	5021      	str	r1, [r4, r0]
+   19de6:	6861      	ldr	r1, [r4, #4]
+   19de8:	2021      	movs	r0, #33	; 0x21
+   19dea:	f891 2618 	ldrb.w	r2, [r1, #1560]	; 0x618
+   19dee:	2a01      	cmp	r2, #1
+   19df0:	d804      	bhi.n	19dfc <ih264d_mark_err_slice_skip@@Base+0x1f8>
+   19df2:	f8d4 2848 	ldr.w	r2, [r4, #2120]	; 0x848
+   19df6:	2a00      	cmp	r2, #0
+   19df8:	bf08      	it	eq
+   19dfa:	2003      	moveq	r0, #3
+   19dfc:	7f49      	ldrb	r1, [r1, #29]
+   19dfe:	f241 5268 	movw	r2, #5480	; 0x1568
+   19e02:	58a2      	ldr	r2, [r4, r2]
+   19e04:	2300      	movs	r3, #0
+   19e06:	2942      	cmp	r1, #66	; 0x42
+   19e08:	f04f 0100 	mov.w	r1, #0
+   19e0c:	f8b4 73a0 	ldrh.w	r7, [r4, #928]	; 0x3a0
+   19e10:	bf18      	it	ne
+   19e12:	2101      	movne	r1, #1
+   19e14:	4088      	lsls	r0, r1
+   19e16:	2104      	movs	r1, #4
+   19e18:	eb01 0080 	add.w	r0, r1, r0, lsl #2
+   19e1c:	f241 5170 	movw	r1, #5488	; 0x1570
+   19e20:	fb00 2007 	mla	r0, r0, r7, r2
+   19e24:	5862      	ldr	r2, [r4, r1]
+   19e26:	60d0      	str	r0, [r2, #12]
+   19e28:	f8b4 04c8 	ldrh.w	r0, [r4, #1224]	; 0x4c8
+   19e2c:	9f0a      	ldr	r7, [sp, #40]	; 0x28
+   19e2e:	68e2      	ldr	r2, [r4, #12]
+   19e30:	40b8      	lsls	r0, r7
+   19e32:	8290      	strh	r0, [r2, #20]
+   19e34:	68e0      	ldr	r0, [r4, #12]
+   19e36:	f880 3022 	strb.w	r3, [r0, #34]	; 0x22
+   19e3a:	68e0      	ldr	r0, [r4, #12]
+   19e3c:	f880 3023 	strb.w	r3, [r0, #35]	; 0x23
+   19e40:	1863      	adds	r3, r4, r1
+   19e42:	68e0      	ldr	r0, [r4, #12]
+   19e44:	7e42      	ldrb	r2, [r0, #25]
+   19e46:	2a00      	cmp	r2, #0
+   19e48:	bf1c      	itt	ne
+   19e4a:	8ac0      	ldrhne	r0, [r0, #22]
+   19e4c:	f8a4 082a 	strhne.w	r0, [r4, #2090]	; 0x82a
+   19e50:	f8b4 04c8 	ldrh.w	r0, [r4, #1224]	; 0x4c8
+   19e54:	6819      	ldr	r1, [r3, #0]
+   19e56:	9a0a      	ldr	r2, [sp, #40]	; 0x28
+   19e58:	4090      	lsls	r0, r2
+   19e5a:	6008      	str	r0, [r1, #0]
+   19e5c:	68e0      	ldr	r0, [r4, #12]
+   19e5e:	f8b0 005c 	ldrh.w	r0, [r0, #92]	; 0x5c
+   19e62:	6819      	ldr	r1, [r3, #0]
+   19e64:	8108      	strh	r0, [r1, #8]
+   19e66:	f241 514e 	movw	r1, #5454	; 0x154e
+   19e6a:	5c62      	ldrb	r2, [r4, r1]
+   19e6c:	4421      	add	r1, r4
+   19e6e:	f8d4 00e8 	ldr.w	r0, [r4, #232]	; 0xe8
+   19e72:	2a00      	cmp	r2, #0
+   19e74:	9102      	str	r1, [sp, #8]
+   19e76:	bf0e      	itee	eq
+   19e78:	f8c4 00f0 	streq.w	r0, [r4, #240]	; 0xf0
+   19e7c:	6819      	ldrne	r1, [r3, #0]
+   19e7e:	6108      	strne	r0, [r1, #16]
+   19e80:	2200      	movs	r2, #0
+   19e82:	68e0      	ldr	r0, [r4, #12]
+   19e84:	49ed      	ldr	r1, [pc, #948]	; (1a23c <ih264d_mark_err_slice_skip@@Base+0x638>)
+   19e86:	76c2      	strb	r2, [r0, #27]
+   19e88:	4479      	add	r1, pc
+   19e8a:	6818      	ldr	r0, [r3, #0]
+   19e8c:	6809      	ldr	r1, [r1, #0]
+   19e8e:	9304      	str	r3, [sp, #16]
+   19e90:	6042      	str	r2, [r0, #4]
+   19e92:	f8c4 13cc 	str.w	r1, [r4, #972]	; 0x3cc
+   19e96:	2100      	movs	r1, #0
+   19e98:	f8d4 047c 	ldr.w	r0, [r4, #1148]	; 0x47c
+   19e9c:	f8c4 0480 	str.w	r0, [r4, #1152]	; 0x480
+   19ea0:	2002      	movs	r0, #2
+   19ea2:	f884 0607 	strb.w	r0, [r4, #1543]	; 0x607
+   19ea6:	9805      	ldr	r0, [sp, #20]
+   19ea8:	f890 0020 	ldrb.w	r0, [r0, #32]
+   19eac:	f884 0043 	strb.w	r0, [r4, #67]	; 0x43
+   19eb0:	4620      	mov	r0, r4
+   19eb2:	f009 f97b 	bl	231ac <ih264d_update_qp@@Base>
+   19eb6:	4625      	mov	r5, r4
+   19eb8:	f04f 0901 	mov.w	r9, #1
+   19ebc:	f8b5 44c8 	ldrh.w	r4, [r5, #1224]	; 0x4c8
+   19ec0:	211c      	movs	r1, #28
+   19ec2:	f8d5 6478 	ldr.w	r6, [r5, #1144]	; 0x478
+   19ec6:	2700      	movs	r7, #0
+   19ec8:	f895 2462 	ldrb.w	r2, [r5, #1122]	; 0x462
+   19ecc:	4653      	mov	r3, sl
+   19ece:	e009      	b.n	19ee4 <ih264d_mark_err_slice_skip@@Base+0x2e0>
+   19ed0:	f8b5 04c8 	ldrh.w	r0, [r5, #1224]	; 0x4c8
+   19ed4:	2200      	movs	r2, #0
+   19ed6:	211c      	movs	r1, #28
+   19ed8:	9b08      	ldr	r3, [sp, #32]
+   19eda:	4458      	add	r0, fp
+   19edc:	f8a5 04c8 	strh.w	r0, [r5, #1224]	; 0x4c8
+   19ee0:	f885 2462 	strb.w	r2, [r5, #1122]	; 0x462
+   19ee4:	eb02 0042 	add.w	r0, r2, r2, lsl #1
+   19ee8:	f106 0b01 	add.w	fp, r6, #1
+   19eec:	4616      	mov	r6, r2
+   19eee:	9203      	str	r2, [sp, #12]
+   19ef0:	ea49 1800 	orr.w	r8, r9, r0, lsl #4
+   19ef4:	ebc2 1002 	rsb	r0, r2, r2, lsl #4
+   19ef8:	eb01 0980 	add.w	r9, r1, r0, lsl #2
+   19efc:	2f00      	cmp	r7, #0
+   19efe:	f040 80d8 	bne.w	1a0b2 <ih264d_mark_err_slice_skip@@Base+0x4ae>
+   19f02:	6868      	ldr	r0, [r5, #4]
+   19f04:	8900      	ldrh	r0, [r0, #8]
+   19f06:	4284      	cmp	r4, r0
+   19f08:	f300 80d3 	bgt.w	1a0b2 <ih264d_mark_err_slice_skip@@Base+0x4ae>
+   19f0c:	f8d5 73e0 	ldr.w	r7, [r5, #992]	; 0x3e0
+   19f10:	2200      	movs	r2, #0
+   19f12:	990a      	ldr	r1, [sp, #40]	; 0x28
+   19f14:	eb07 0a09 	add.w	sl, r7, r9
+   19f18:	f8c5 685c 	str.w	r6, [r5, #2140]	; 0x85c
+   19f1c:	9607      	str	r6, [sp, #28]
+   19f1e:	2900      	cmp	r1, #0
+   19f20:	fa26 f001 	lsr.w	r0, r6, r1
+   19f24:	f80a 2c11 	strb.w	r2, [sl, #-17]
+   19f28:	f8c5 01b4 	str.w	r0, [r5, #436]	; 0x1b4
+   19f2c:	f1aa 061c 	sub.w	r6, sl, #28
+   19f30:	f8d5 0444 	ldr.w	r0, [r5, #1092]	; 0x444
+   19f34:	9009      	str	r0, [sp, #36]	; 0x24
+   19f36:	f44f 7080 	mov.w	r0, #256	; 0x100
+   19f3a:	f80a 2c16 	strb.w	r2, [sl, #-22]
+   19f3e:	f82b 0c01 	strh.w	r0, [fp, #-1]
+   19f42:	d006      	beq.n	19f52 <ih264d_mark_err_slice_skip@@Base+0x34e>
+   19f44:	b2a1      	uxth	r1, r4
+   19f46:	4628      	mov	r0, r5
+   19f48:	4632      	mov	r2, r6
+   19f4a:	9308      	str	r3, [sp, #32]
+   19f4c:	f005 ff83 	bl	1fe56 <ih264d_get_mb_info_cavlc_mbaff@@Base>
+   19f50:	e005      	b.n	19f5e <ih264d_mark_err_slice_skip@@Base+0x35a>
+   19f52:	b2a1      	uxth	r1, r4
+   19f54:	4628      	mov	r0, r5
+   19f56:	4632      	mov	r2, r6
+   19f58:	9308      	str	r3, [sp, #32]
+   19f5a:	f005 fef3 	bl	1fd44 <ih264d_get_mb_info_cavlc_nonmbaff@@Base>
+   19f5e:	f8d5 0864 	ldr.w	r0, [r5, #2148]	; 0x864
+   19f62:	b948      	cbnz	r0, 19f78 <ih264d_mark_err_slice_skip@@Base+0x374>
+   19f64:	9809      	ldr	r0, [sp, #36]	; 0x24
+   19f66:	f895 34a0 	ldrb.w	r3, [r5, #1184]	; 0x4a0
+   19f6a:	4440      	add	r0, r8
+   19f6c:	f895 2041 	ldrb.w	r2, [r5, #65]	; 0x41
+   19f70:	9905      	ldr	r1, [sp, #20]
+   19f72:	3801      	subs	r0, #1
+   19f74:	f004 feea 	bl	1ed4c <ih264d_set_deblocking_parameters@@Base>
+   19f78:	2100      	movs	r1, #0
+   19f7a:	20ff      	movs	r0, #255	; 0xff
+   19f7c:	f885 105e 	strb.w	r1, [r5, #94]	; 0x5e
+   19f80:	2202      	movs	r2, #2
+   19f82:	f885 1098 	strb.w	r1, [r5, #152]	; 0x98
+   19f86:	f80a 0c1c 	strb.w	r0, [sl, #-28]
+   19f8a:	f80a 1c19 	strb.w	r1, [sl, #-25]
+   19f8e:	f80a 1c1a 	strb.w	r1, [sl, #-26]
+   19f92:	f8d5 0480 	ldr.w	r0, [r5, #1152]	; 0x480
+   19f96:	7002      	strb	r2, [r0, #0]
+   19f98:	7081      	strb	r1, [r0, #2]
+   19f9a:	f8d5 0480 	ldr.w	r0, [r5, #1152]	; 0x480
+   19f9e:	3005      	adds	r0, #5
+   19fa0:	f8c5 0480 	str.w	r0, [r5, #1152]	; 0x480
+   19fa4:	e9c5 114a 	strd	r1, r1, [r5, #296]	; 0x128
+   19fa8:	f8da 001c 	ldr.w	r0, [sl, #28]
+   19fac:	6141      	str	r1, [r0, #20]
+   19fae:	f8da 001c 	ldr.w	r0, [sl, #28]
+   19fb2:	6181      	str	r1, [r0, #24]
+   19fb4:	f8da 001c 	ldr.w	r0, [sl, #28]
+   19fb8:	83c1      	strh	r1, [r0, #30]
+   19fba:	f82a 1c02 	strh.w	r1, [sl, #-2]
+   19fbe:	f827 1009 	strh.w	r1, [r7, r9]
+   19fc2:	f8da 001c 	ldr.w	r0, [sl, #28]
+   19fc6:	9909      	ldr	r1, [sp, #36]	; 0x24
+   19fc8:	7742      	strb	r2, [r0, #29]
+   19fca:	f895 0043 	ldrb.w	r0, [r5, #67]	; 0x43
+   19fce:	f801 0008 	strb.w	r0, [r1, r8]
+   19fd2:	980a      	ldr	r0, [sp, #40]	; 0x28
+   19fd4:	2800      	cmp	r0, #0
+   19fd6:	bf1e      	ittt	ne
+   19fd8:	4628      	movne	r0, r5
+   19fda:	4631      	movne	r1, r6
+   19fdc:	f006 fd81 	blne	20ae2 <ih264d_update_mbaff_left_nnz@@Base>
+   19fe0:	9e07      	ldr	r6, [sp, #28]
+   19fe2:	3401      	adds	r4, #1
+   19fe4:	9a08      	ldr	r2, [sp, #32]
+   19fe6:	8ca8      	ldrh	r0, [r5, #36]	; 0x24
+   19fe8:	3601      	adds	r6, #1
+   19fea:	9906      	ldr	r1, [sp, #24]
+   19fec:	f1a2 0c01 	sub.w	ip, r2, #1
+   19ff0:	1a08      	subs	r0, r1, r0
+   19ff2:	3801      	subs	r0, #1
+   19ff4:	9009      	str	r0, [sp, #36]	; 0x24
+   19ff6:	d001      	beq.n	19ffc <ih264d_mark_err_slice_skip@@Base+0x3f8>
+   19ff8:	2100      	movs	r1, #0
+   19ffa:	e00c      	b.n	1a016 <ih264d_mark_err_slice_skip@@Base+0x412>
+   19ffc:	f016 0f01 	tst.w	r6, #1
+   1a000:	f04f 0000 	mov.w	r0, #0
+   1a004:	bf08      	it	eq
+   1a006:	2001      	moveq	r0, #1
+   1a008:	990a      	ldr	r1, [sp, #40]	; 0x28
+   1a00a:	2900      	cmp	r1, #0
+   1a00c:	f04f 0100 	mov.w	r1, #0
+   1a010:	bf08      	it	eq
+   1a012:	2101      	moveq	r1, #1
+   1a014:	4301      	orrs	r1, r0
+   1a016:	2a01      	cmp	r2, #1
+   1a018:	4617      	mov	r7, r2
+   1a01a:	bf18      	it	ne
+   1a01c:	2700      	movne	r7, #0
+   1a01e:	f895 0048 	ldrb.w	r0, [r5, #72]	; 0x48
+   1a022:	f80a 7c16 	strb.w	r7, [sl, #-22]
+   1a026:	2a01      	cmp	r2, #1
+   1a028:	d00a      	beq.n	1a040 <ih264d_mark_err_slice_skip@@Base+0x43c>
+   1a02a:	b949      	cbnz	r1, 1a040 <ih264d_mark_err_slice_skip@@Base+0x43c>
+   1a02c:	f108 0830 	add.w	r8, r8, #48	; 0x30
+   1a030:	f109 093c 	add.w	r9, r9, #60	; 0x3c
+   1a034:	f10b 0b20 	add.w	fp, fp, #32
+   1a038:	4663      	mov	r3, ip
+   1a03a:	4286      	cmp	r6, r0
+   1a03c:	f47f af5e 	bne.w	19efc <ih264d_mark_err_slice_skip@@Base+0x2f8>
+   1a040:	e9cd 1c07 	strd	r1, ip, [sp, #28]
+   1a044:	fa5f f886 	uxtb.w	r8, r6
+   1a048:	9803      	ldr	r0, [sp, #12]
+   1a04a:	4642      	mov	r2, r8
+   1a04c:	f8d5 33cc 	ldr.w	r3, [r5, #972]	; 0x3cc
+   1a050:	46b3      	mov	fp, r6
+   1a052:	fa5f fa80 	uxtb.w	sl, r0
+   1a056:	4628      	mov	r0, r5
+   1a058:	4651      	mov	r1, sl
+   1a05a:	4798      	blx	r3
+   1a05c:	f8d5 047c 	ldr.w	r0, [r5, #1148]	; 0x47c
+   1a060:	f04f 0901 	mov.w	r9, #1
+   1a064:	f8d5 6478 	ldr.w	r6, [r5, #1144]	; 0x478
+   1a068:	f8c5 0480 	str.w	r0, [r5, #1152]	; 0x480
+   1a06c:	9802      	ldr	r0, [sp, #8]
+   1a06e:	7800      	ldrb	r0, [r0, #0]
+   1a070:	b198      	cbz	r0, 1a09a <ih264d_mark_err_slice_skip@@Base+0x496>
+   1a072:	9807      	ldr	r0, [sp, #28]
+   1a074:	4651      	mov	r1, sl
+   1a076:	f8cd 9000 	str.w	r9, [sp]
+   1a07a:	4642      	mov	r2, r8
+   1a07c:	9001      	str	r0, [sp, #4]
+   1a07e:	9809      	ldr	r0, [sp, #36]	; 0x24
+   1a080:	b2c3      	uxtb	r3, r0
+   1a082:	4628      	mov	r0, r5
+   1a084:	f012 ff9c 	bl	2cfc0 <ih264d_parse_tfr_nmb@@Base>
+   1a088:	f8d5 03e0 	ldr.w	r0, [r5, #992]	; 0x3e0
+   1a08c:	ebcb 110b 	rsb	r1, fp, fp, lsl #4
+   1a090:	eb00 0081 	add.w	r0, r0, r1, lsl #2
+   1a094:	f8c5 03e0 	str.w	r0, [r5, #992]	; 0x3e0
+   1a098:	e71a      	b.n	19ed0 <ih264d_mark_err_slice_skip@@Base+0x2cc>
+   1a09a:	9807      	ldr	r0, [sp, #28]
+   1a09c:	4651      	mov	r1, sl
+   1a09e:	f8cd 9000 	str.w	r9, [sp]
+   1a0a2:	4642      	mov	r2, r8
+   1a0a4:	9001      	str	r0, [sp, #4]
+   1a0a6:	9809      	ldr	r0, [sp, #36]	; 0x24
+   1a0a8:	b2c3      	uxtb	r3, r0
+   1a0aa:	4628      	mov	r0, r5
+   1a0ac:	f00b fd74 	bl	25b98 <ih264d_decode_recon_tfr_nmb@@Base>
+   1a0b0:	e70e      	b.n	19ed0 <ih264d_mark_err_slice_skip@@Base+0x2cc>
+   1a0b2:	9a04      	ldr	r2, [sp, #16]
+   1a0b4:	2000      	movs	r0, #0
+   1a0b6:	f8c5 085c 	str.w	r0, [r5, #2140]	; 0x85c
+   1a0ba:	6810      	ldr	r0, [r2, #0]
+   1a0bc:	6800      	ldr	r0, [r0, #0]
+   1a0be:	68e9      	ldr	r1, [r5, #12]
+   1a0c0:	1a20      	subs	r0, r4, r0
+   1a0c2:	f8c1 0368 	str.w	r0, [r1, #872]	; 0x368
+   1a0c6:	f241 5084 	movw	r0, #5508	; 0x1584
+   1a0ca:	5828      	ldr	r0, [r5, r0]
+   1a0cc:	2800      	cmp	r0, #0
+   1a0ce:	bf1f      	itttt	ne
+   1a0d0:	6810      	ldrne	r0, [r2, #0]
+   1a0d2:	3014      	addne	r0, #20
+   1a0d4:	6010      	strne	r0, [r2, #0]
+   1a0d6:	f8b5 03a0 	ldrhne.w	r0, [r5, #928]	; 0x3a0
+   1a0da:	bf1c      	itt	ne
+   1a0dc:	3001      	addne	r0, #1
+   1a0de:	f8a5 03a0 	strhne.w	r0, [r5, #928]	; 0x3a0
+   1a0e2:	6a68      	ldr	r0, [r5, #36]	; 0x24
+   1a0e4:	f8a5 04ae 	strh.w	r0, [r5, #1198]	; 0x4ae
+   1a0e8:	0c00      	lsrs	r0, r0, #16
+   1a0ea:	f8a5 04b0 	strh.w	r0, [r5, #1200]	; 0x4b0
+   1a0ee:	8e68      	ldrh	r0, [r5, #50]	; 0x32
+   1a0f0:	8e29      	ldrh	r1, [r5, #48]	; 0x30
+   1a0f2:	4348      	muls	r0, r1
+   1a0f4:	f8b5 14c8 	ldrh.w	r1, [r5, #1224]	; 0x4c8
+   1a0f8:	4281      	cmp	r1, r0
+   1a0fa:	bf24      	itt	cs
+   1a0fc:	2001      	movcs	r0, #1
+   1a0fe:	f885 0606 	strbcs.w	r0, [r5, #1542]	; 0x606
+   1a102:	2000      	movs	r0, #0
+   1a104:	b00b      	add	sp, #44	; 0x2c
+   1a106:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   1a10a:	f241 504e 	movw	r0, #5454	; 0x154e
+   1a10e:	5c21      	ldrb	r1, [r4, r0]
+   1a110:	f8d4 03e0 	ldr.w	r0, [r4, #992]	; 0x3e0
+   1a114:	b929      	cbnz	r1, 1a122 <ih264d_mark_err_slice_skip@@Base+0x51e>
+   1a116:	f8d4 1858 	ldr.w	r1, [r4, #2136]	; 0x858
+   1a11a:	ebc1 1101 	rsb	r1, r1, r1, lsl #4
+   1a11e:	eb00 0081 	add.w	r0, r0, r1, lsl #2
+   1a122:	f1a0 063c 	sub.w	r6, r0, #60	; 0x3c
+   1a126:	2d00      	cmp	r5, #0
+   1a128:	8c30      	ldrh	r0, [r6, #32]
+   1a12a:	84e0      	strh	r0, [r4, #38]	; 0x26
+   1a12c:	8bf0      	ldrh	r0, [r6, #30]
+   1a12e:	84a0      	strh	r0, [r4, #36]	; 0x24
+   1a130:	7970      	ldrb	r0, [r6, #5]
+   1a132:	f884 0041 	strb.w	r0, [r4, #65]	; 0x41
+   1a136:	d020      	beq.n	1a17a <ih264d_mark_err_slice_skip@@Base+0x576>
+   1a138:	f8d4 00ec 	ldr.w	r0, [r4, #236]	; 0xec
+   1a13c:	f8c4 00e8 	str.w	r0, [r4, #232]	; 0xe8
+   1a140:	f241 5048 	movw	r0, #5448	; 0x1548
+   1a144:	5a21      	ldrh	r1, [r4, r0]
+   1a146:	3901      	subs	r1, #1
+   1a148:	5221      	strh	r1, [r4, r0]
+   1a14a:	6b60      	ldr	r0, [r4, #52]	; 0x34
+   1a14c:	3810      	subs	r0, #16
+   1a14e:	6360      	str	r0, [r4, #52]	; 0x34
+   1a150:	f894 02b5 	ldrb.w	r0, [r4, #693]	; 0x2b5
+   1a154:	2801      	cmp	r0, #1
+   1a156:	d809      	bhi.n	1a16c <ih264d_mark_err_slice_skip@@Base+0x568>
+   1a158:	f8d4 33cc 	ldr.w	r3, [r4, #972]	; 0x3cc
+   1a15c:	b2ea      	uxtb	r2, r5
+   1a15e:	4620      	mov	r0, r4
+   1a160:	4639      	mov	r1, r7
+   1a162:	4798      	blx	r3
+   1a164:	f8d4 047c 	ldr.w	r0, [r4, #1148]	; 0x47c
+   1a168:	f8c4 0480 	str.w	r0, [r4, #1152]	; 0x480
+   1a16c:	8ca0      	ldrh	r0, [r4, #36]	; 0x24
+   1a16e:	9906      	ldr	r1, [sp, #24]
+   1a170:	1a08      	subs	r0, r1, r0
+   1a172:	3801      	subs	r0, #1
+   1a174:	d004      	beq.n	1a180 <ih264d_mark_err_slice_skip@@Base+0x57c>
+   1a176:	2100      	movs	r1, #0
+   1a178:	e00a      	b.n	1a190 <ih264d_mark_err_slice_skip@@Base+0x58c>
+   1a17a:	f8b4 04c8 	ldrh.w	r0, [r4, #1224]	; 0x4c8
+   1a17e:	e030      	b.n	1a1e2 <ih264d_mark_err_slice_skip@@Base+0x5de>
+   1a180:	990a      	ldr	r1, [sp, #40]	; 0x28
+   1a182:	2201      	movs	r2, #1
+   1a184:	2900      	cmp	r1, #0
+   1a186:	bf18      	it	ne
+   1a188:	2101      	movne	r1, #1
+   1a18a:	4029      	ands	r1, r5
+   1a18c:	ea22 0101 	bic.w	r1, r2, r1
+   1a190:	2201      	movs	r2, #1
+   1a192:	f241 534e 	movw	r3, #5454	; 0x154e
+   1a196:	71b2      	strb	r2, [r6, #6]
+   1a198:	5ce3      	ldrb	r3, [r4, r3]
+   1a19a:	b183      	cbz	r3, 1a1be <ih264d_mark_err_slice_skip@@Base+0x5ba>
+   1a19c:	e9cd 2100 	strd	r2, r1, [sp]
+   1a1a0:	b2c3      	uxtb	r3, r0
+   1a1a2:	b2ea      	uxtb	r2, r5
+   1a1a4:	4620      	mov	r0, r4
+   1a1a6:	4639      	mov	r1, r7
+   1a1a8:	f012 ff0a 	bl	2cfc0 <ih264d_parse_tfr_nmb@@Base>
+   1a1ac:	f8d4 03e0 	ldr.w	r0, [r4, #992]	; 0x3e0
+   1a1b0:	ebc5 1105 	rsb	r1, r5, r5, lsl #4
+   1a1b4:	eb00 0081 	add.w	r0, r0, r1, lsl #2
+   1a1b8:	f8c4 03e0 	str.w	r0, [r4, #992]	; 0x3e0
+   1a1bc:	e007      	b.n	1a1ce <ih264d_mark_err_slice_skip@@Base+0x5ca>
+   1a1be:	e9cd 2100 	strd	r2, r1, [sp]
+   1a1c2:	b2c3      	uxtb	r3, r0
+   1a1c4:	b2ea      	uxtb	r2, r5
+   1a1c6:	4620      	mov	r0, r4
+   1a1c8:	4639      	mov	r1, r7
+   1a1ca:	f00b fce5 	bl	25b98 <ih264d_decode_recon_tfr_nmb@@Base>
+   1a1ce:	f8b4 04c8 	ldrh.w	r0, [r4, #1224]	; 0x4c8
+   1a1d2:	2100      	movs	r1, #0
+   1a1d4:	4428      	add	r0, r5
+   1a1d6:	f8a4 04c8 	strh.w	r0, [r4, #1224]	; 0x4c8
+   1a1da:	f884 1462 	strb.w	r1, [r4, #1122]	; 0x462
+   1a1de:	f8c4 185c 	str.w	r1, [r4, #2140]	; 0x85c
+   1a1e2:	8e61      	ldrh	r1, [r4, #50]	; 0x32
+   1a1e4:	b280      	uxth	r0, r0
+   1a1e6:	8e22      	ldrh	r2, [r4, #48]	; 0x30
+   1a1e8:	4351      	muls	r1, r2
+   1a1ea:	4288      	cmp	r0, r1
+   1a1ec:	d217      	bcs.n	1a21e <ih264d_mark_err_slice_skip@@Base+0x61a>
+   1a1ee:	f8d8 1000 	ldr.w	r1, [r8]
+   1a1f2:	6809      	ldr	r1, [r1, #0]
+   1a1f4:	9a05      	ldr	r2, [sp, #20]
+   1a1f6:	7e12      	ldrb	r2, [r2, #24]
+   1a1f8:	40d0      	lsrs	r0, r2
+   1a1fa:	4281      	cmp	r1, r0
+   1a1fc:	f4bf adf3 	bcs.w	19de6 <ih264d_mark_err_slice_skip@@Base+0x1e2>
+   1a200:	6a60      	ldr	r0, [r4, #36]	; 0x24
+   1a202:	f8a4 04ae 	strh.w	r0, [r4, #1198]	; 0x4ae
+   1a206:	0c00      	lsrs	r0, r0, #16
+   1a208:	f8a4 04b0 	strh.w	r0, [r4, #1200]	; 0x4b0
+   1a20c:	f8b4 03a0 	ldrh.w	r0, [r4, #928]	; 0x3a0
+   1a210:	3001      	adds	r0, #1
+   1a212:	f8a4 03a0 	strh.w	r0, [r4, #928]	; 0x3a0
+   1a216:	f8d8 0000 	ldr.w	r0, [r8]
+   1a21a:	3014      	adds	r0, #20
+   1a21c:	e5a0      	b.n	19d60 <ih264d_mark_err_slice_skip@@Base+0x15c>
+   1a21e:	2001      	movs	r0, #1
+   1a220:	f884 0606 	strb.w	r0, [r4, #1542]	; 0x606
+   1a224:	e76d      	b.n	1a102 <ih264d_mark_err_slice_skip@@Base+0x4fe>
+   1a226:	bf00      	nop
+   1a228:	b040      	add	sp, #256	; 0x100
+   1a22a:	0003      	movs	r3, r0
+   1a22c:	b040      	add	sp, #256	; 0x100
+   1a22e:	0003      	movs	r3, r0
+   1a230:	b040      	add	sp, #256	; 0x100
+   1a232:	0003      	movs	r3, r0
+   1a234:	af18      	add	r7, sp, #96	; 0x60
+   1a236:	0003      	movs	r3, r0
+   1a238:	aedc      	add	r6, sp, #880	; 0x370
+   1a23a:	0003      	movs	r3, r0
+   1a23c:	ae24      	add	r6, sp, #144	; 0x90
+   1a23e:	0003      	movs	r3, r0
